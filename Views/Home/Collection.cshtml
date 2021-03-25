@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "View Collection";
+}
+<h2>The Film Collection</h2>
+<br />
+@model IEnumerable<Film>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Edit</th>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th>Lent To</th>
+            <th>Notes</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Film film in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("EditFilm","Home", new { filmID = film.FilmID })">&#9998;</a></td>
+                <td>@film.Category</td>
+                <td>@film.Title</td>
+                <td>@film.Year</td>
+                <td>@film.Director</td>
+                <td>@film.Rating</td>
+                @if (film.Edited)
+                {
+                    <td>Yes</td>
+                }
+                else
+                {
+                    <td>No</td>
+                }
+                <td>@film.LentTo</td>
+                <td>@film.Notes</td>
+                <td>@Html.ActionLink("Delete", "DeleteFilm", "Home", new { filmID = film.FilmID }, new { @class="btn btn-danger btn-sm" })</td>
+            </tr>
+        }
+    </tbody>
+</table>

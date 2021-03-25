@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Add Film";
+}
+@model FilmCollection_v2.Models.Film
+<div class="container margin-within">
+    <h3>Add a New Film to the Collection</h3><br />
+    <form method="post">
+        <label>Category:</label>
+        <input asp-for="Category" class="form-control"/>
+        <br />
+        <label>Title:</label>
+        <input asp-for="Title" class="form-control"/>
+        <br />
+        <label>Year:</label>
+        <input asp-for="Year" class="form-control"/>
+        <br />
+        <label>Director:</label>
+        <input asp-for="Director" class="form-control"/>
+        <br />
+        <label>Rating:</label>
+        <select asp-for="Rating" class="form-control" required>
+            <option value="">Select Rating...</option>
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+        <br />
+        <label>Edited?</label>
+        <input asp-for="Edited"/>&nbsp;&nbsp;
+        <span>Check if "yes", leave unchecked if "no"</span>
+        <br />
+        <label>Lent To:</label>
+        <input asp-for="LentTo" class="form-control" />
+        <br />
+        <label>Notes:</label>
+        <input asp-for="Notes" class="form-control"/>
+        <br />
+        <input type="submit" value="Add to Collection" class="btn btn-success" />
+        <div asp-validation-summary="All"></div>
+    </form>
+</div>
